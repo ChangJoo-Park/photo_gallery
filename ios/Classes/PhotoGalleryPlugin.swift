@@ -486,11 +486,18 @@ public class PhotoGalleryPlugin: NSObject, FlutterPlugin {
   }
 
   private func getMediumFromAssetLightWeight(asset: PHAsset) -> [String: Any?] {
+    let filename = self.extractFilenameFromAsset(asset: asset)
+    // let mimeType = self.extractMimeTypeFromAsset(asset: asset)
+    let resource = self.extractResourceFromAsset(asset: asset)
+    let size = self.extractSizeFromResource(resource: resource)
+    // let orientation = self.toOrientationValue(orientation: asset.value(forKey: "orientation") as? UIImage.Orientation)
     return [
       "id": asset.localIdentifier,
+      "filename": filename,
       "mediumType": toDartMediumType(value: asset.mediaType),
       "height": asset.pixelHeight,
       "width": asset.pixelWidth,
+      "size": size,
       "duration": NSInteger(asset.duration * 1000),
       "creationDate": (asset.creationDate != nil) ? NSInteger(asset.creationDate!.timeIntervalSince1970 * 1000) : nil,
       "modifiedDate": (asset.modificationDate != nil) ? NSInteger(asset.modificationDate!.timeIntervalSince1970 * 1000) : nil
