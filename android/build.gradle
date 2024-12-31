@@ -21,10 +21,8 @@ rootProject.allprojects {
     }
 }
 
-plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
-}
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
     namespace 'com.morbit.photogallery'  // 네임스페이스 추가
