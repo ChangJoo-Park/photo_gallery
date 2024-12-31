@@ -21,10 +21,13 @@ rootProject.allprojects {
     }
 }
 
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
 
 android {
+    namespace 'com.morbit.photogallery'  // 네임스페이스 추가
     compileSdkVersion 33
 
     compileOptions {
